@@ -36,6 +36,21 @@
   transition: opacity 0.4s;
 }
 
+.modal_close-form {
+  background-image: url(../images/close2.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  border: none;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
 .modal__input {
   border-bottom: 1px solid rgba(0, 0, 0, 1);
   border-top: none;

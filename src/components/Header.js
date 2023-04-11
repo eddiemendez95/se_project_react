@@ -1,4 +1,5 @@
 import "../blocks/header.css";
+import avatarImage from "../images/avatar.svg";
 
 const Header = ({ cityName, onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
@@ -26,12 +27,10 @@ const Header = ({ cityName, onCreateModal }) => {
           </button>
         </div>
         <div className="header__info">Terrence Tegegne</div>
-        <img src={require("../images/avatar.svg").default} alt="avatar" />
+        <img src={avatarImage} alt="avatar" />
       </div>
     </header>
   );
 };
 
 export default Header;
-
-<img src={require("../images/avatar.svg").default} alt="avatar" />;

@@ -34,7 +34,11 @@ function App() {
       <Main onSelectCard={handleSelectedCard} temp={temp} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New garment"
+          buttonText="Add garment"
+          onClose={handleCloseModal}
+        >
           <label>
             <h3 className="modal__label">Name</h3>
             <input

@@ -12,8 +12,27 @@
   align-items: center;
 }
 
-.header__avatar-logo {
+.header__info-container {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.header__info {
+  font-family: "Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__button {
+  font-family: "Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  height: 24px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: opacity 0.4s;
 }

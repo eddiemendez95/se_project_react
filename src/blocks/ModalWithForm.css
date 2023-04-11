@@ -1,0 +1,120 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.modal_content {
+  background-color: #fff;
+  position: relative;
+  border-radius: 10px;
+  flex-direction: column;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal_close {
+  background-image: url(../images/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  border: none;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+.modal__input {
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+}
+
+.modal_image {
+  overflow: hidden;
+}
+
+.modal__title {
+  margin: 0px;
+  padding: 28px;
+}
+
+.modal_caption {
+  height: 112px;
+  overflow: hidden;
+}
+
+.modal_caption-title {
+  font-family: "Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 12px;
+  margin-left: 32px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  padding-top: 0px;
+  font-size: 14px;
+  border: none;
+  gap: 20px;
+}
+
+.modal__label {
+  margin-bottom: 8px;
+}
+
+.modal__button {
+  font-family: "Grotesk", sans-serif;
+  font-family: 700;
+  font-size: 16px;
+  background-color: #000;
+  background-size: contain;
+  height: 36px;
+  width: 124px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  margin: 0 32px 36px 28px;
+  padding: 8px;
+}
+
+.modal__button_disabled {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+.modal__button:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.modal__radio {
+  margin: 0;
+}
+
+.modal__radio-button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

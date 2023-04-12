@@ -95,3 +95,7 @@ export const weatherOptions = [
     type: "fog",
   },
 ];
+
+export const latitude = "44.34";
+export const longitude = "10.99";
+export const APIkey = "428e15f66fd95028ada95b6b6f1555d4";

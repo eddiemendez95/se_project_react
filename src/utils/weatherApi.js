@@ -2,9 +2,7 @@
 
 // 428e15f66fd95028ada95b6b6f1555d4
 
-const latitude = "";
-const longitude = "";
-const APIkey = "428e15f66fd95028ada95b6b6f1555d4";
+import { latitude, longitude, APIkey } from "./constants";
 
 export const processServerResponse = (res) => {
   if (res.ok) {

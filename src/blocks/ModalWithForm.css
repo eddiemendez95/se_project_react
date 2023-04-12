@@ -36,6 +36,10 @@
   transition: opacity 0.4s;
 }
 
+.modal_close:hover {
+  opacity: 0.6;
+}
+
 .modal_close-form {
   background-image: url(../images/close2.svg);
   background-repeat: no-repeat;
@@ -49,6 +53,10 @@
   height: 20px;
   cursor: pointer;
   transition: opacity 0.4s;
+}
+
+.modal_close-form:hover {
+  opacity: 0.6;
 }
 
 .modal__input {

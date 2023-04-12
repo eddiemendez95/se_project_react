@@ -36,3 +36,7 @@
   cursor: pointer;
   transition: opacity 0.4s;
 }
+
+.header__button:hover:not(:disabled) {
+  opacity: 0.6;
+}

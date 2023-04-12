@@ -23,10 +23,14 @@ function App() {
     setSelectedCard(card);
   };
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <div>
@@ -66,15 +70,31 @@ function App() {
           <p className="modal__radio">Select the Weather Type</p>
           <div className="modal__radio-button">
             <div>
-              <input type="radio" id="hot" value="hot" required />
+              <input
+                type="radio"
+                id="hot"
+                value="hot"
+                required
+                className="modal__radio-buttons"
+              />
               <label>Hot</label>
             </div>
             <div>
-              <input type="radio" id="warm" value="warm" />
+              <input
+                type="radio"
+                id="warm"
+                value="warm"
+                className="modal__radio-buttons"
+              />
               <label>Warm</label>
             </div>
             <div>
-              <input type="radio" id="cold" value="cold" />
+              <input
+                type="radio"
+                id="cold"
+                value="cold"
+                className="modal__radio-buttons"
+              />
               <label>Cold</label>
             </div>
           </div>

@@ -1,3 +1,5 @@
+import "../blocks/Card.css";
+
 const ItemCard = ({ item, onSelectCard }) => {
   return (
     <div>

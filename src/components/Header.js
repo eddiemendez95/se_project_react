@@ -1,5 +1,9 @@
 import "../blocks/header.css";
 import avatarImage from "../images/avatar.svg";
+import React from "react";
+import { Link } from "react-router-dom";
+import headerLogo from "../images/logo.svg";
+import ToggleSwitch from "./ToggleSwitch";
 
 const Header = ({ cityName, onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,7 +14,7 @@ const Header = ({ cityName, onCreateModal }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={require("../images/logo.svg").default} alt="logo" />
+          <img src={headerLogo} alt="logo" />
         </div>
         <p className="header__info">
           {currentDate}, {cityName}

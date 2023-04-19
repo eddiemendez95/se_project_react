@@ -2,13 +2,16 @@
   position: relative;
 }
 
-.weather_info {
+.weather__info {
   position: absolute;
-  top: 8px;
+  top: 35px;
   left: 16px;
   color: white;
   font-size: 36px;
   line-height: 40px;
+  font-family: "Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .weather__image {

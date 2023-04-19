@@ -21,6 +21,7 @@ const Header = ({ cityName, onCreateModal }) => {
         </p>
       </div>
       <div className="header__info-container">
+        <ToggleSwitch />
         <div>
           <button
             type="text"

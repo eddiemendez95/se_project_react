@@ -6,30 +6,29 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitCont
 import { useContext } from "react";
 
 function Main({ cards, weatherTemp, onSelectCard, weatherCard }) {
-  const { CurrentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const currentTemp = weatherTemp[currentTemperatureUnit];
   const getWeatherType = () => {
-    if (weatherTemp?.temp?.main >= 86) {
+    if (currentTemp >= 86) {
       return "hot";
-    } else if (weatherTemp?.main >= 66 && weatherTemp?.temp?.main <= 85) {
+    } else if (currentTemp >= 66 && currentTemp <= 85) {
       return "warm";
-    } else if (weatherTemp?.temp?.main <= 65) {
+    } else if (currentTemp <= 65) {
       return "cold";
     }
   };
   const weatherType = getWeatherType();
 
-  const filteredCards = cards.filter((item) => {
+  const filteredCards = cards?.filter((item) => {
     return item.weather?.toLowerCase() === weatherType;
   });
 
   return (
     <main className="main">
-      <WeatherCard weatherCard={weatherCard} weatherTemp={weatherTemp} />
+      <WeatherCard weatherCard={weatherCard} weatherTemp={currentTemp} />
       <section className="card_section" id="cards-section">
         <h2 className="main__heading">
-          Today is {weatherTemp && weatherTemp.temp[CurrentTemperatureUnit]} /
-          You may want to wear
+          Today is {currentTemp} {currentTemperatureUnit} / You may want to wear
         </h2>
         <div className="card_items">
           {Array.isArray(filteredCards) &&

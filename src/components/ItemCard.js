@@ -9,7 +9,6 @@ const ItemCard = ({ item, onSelectCard }) => {
           className="card_image"
           onClick={() => onSelectCard(item)}
         />
-
         <div className="card__name-container">
           <div className="card_name">{item.name}</div>
         </div>

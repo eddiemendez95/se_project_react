@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardDeleteModal = ({ onClose, handleDelete }) => {
+const DeleteCardModal = ({ onClose, handleDelete }) => {
   return (
     <div className="modal modal__delete-container">
       <button
@@ -24,4 +24,4 @@ const CardDeleteModal = ({ onClose, handleDelete }) => {
   );
 };
 
-export default CardDeleteModal;
+export default DeleteCardModal;

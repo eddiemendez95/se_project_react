@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-// import "./ToggleSwitch.css";
+import "../blocks/ToggleSwitch.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitContext";
 
 const ToggleSwitch = () => {
@@ -13,18 +13,39 @@ const ToggleSwitch = () => {
     [currentTemperatureUnit]
   );
 
+  const white = "#FFF";
+  const grey = "rgba(0, 0, 0, 0.5)";
+
   return (
-    <div className="toggle-switch">
-      <label className="toggle-switch__label">
-        <input
-          className="toggle-switch__checkbox toggle-switch__checkbox_state_hidden"
-          type="checkbox"
-          name="toggle-switch-checkbox"
-          value={currentTemperatureUnit}
-          onChange={handleToggleSwitch}
-          checked={isChecked}
-        />
-        <span className="toggle-switch__checkbox toggle-switch__checkbox_state_visible" />
+    <div className="switch">
+      <input
+        className="switch__input"
+        id={`toggle_switch`}
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleToggleSwitch}
+        value={currentTemperatureUnit}
+      />
+      <label className="switch__label" htmlFor={`toggle_switch`}>
+        <span className={`switch__button`} />
+        <div className="switch__states">
+          <span
+            className="switch__f"
+            style={{
+              color: (!isChecked && white) || (isChecked && grey),
+            }}
+          >
+            F
+          </span>
+          <span
+            className="switch__c"
+            style={{
+              color: (!isChecked && grey) || (isChecked && white),
+            }}
+          >
+            C
+          </span>
+        </div>
       </label>
     </div>
   );

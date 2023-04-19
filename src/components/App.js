@@ -4,20 +4,28 @@ import Main from "./Main";
 import Footer from "./Footer";
 import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
+import DeleteCardModal from "./DeleteCardModal";
+import Profile from "./Profile";
 import { useEffect, useState } from "react";
-import { getForecastWeather, parseWeatherData } from "../utils/weatherApi";
+import {
+  getWeatherCard,
+  getForecastWeather,
+  parseWeatherData,
+} from "../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitContext";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { getClothingsItems, addClothingItem, deleteCard } from "../utils/api";
+import { Route, Switch } from "react-router-dom";
+import { getClothingItems, addClothingItem, deleteCard } from "../utils/api";
+import { HashRouter } from "react-router-dom/cjs/react-router-dom";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingsItem, setClothingsItem] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
+  const [temp, setTemp] = useState({ F: 32, C: 0 });
   const [cards, setCards] = useState([]);
-  const [cardDeleteModal, setCardDeleteModal] = useState(false);
+  const [city, setCity] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState();
+  const [deleteCardModal, setDeleteCardModal] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -45,25 +53,44 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleDeleteCard = () => {
+  const handleCardDelete = () => {
     deleteCard(selectedCard.id)
       .then(() => {
         setCards(cards.filter((item) => item.id !== selectedCard.id));
         handleCloseModal();
-        setCardDeleteModal(false);
+        setDeleteCardModal(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   const openDeleteModal = () => {
-    setCardDeleteModal(true);
+    setDeleteCardModal(true);
     handleCloseModal();
   };
 
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
+        const cityname = data && data.name;
+        setCity(cityname);
         const temperature = parseWeatherData(data);
-        setTemp(temperature);
+
+        setTemp({ F: temperature, C: temperature - 32 * (4 / 9) });
+        const weatherCardInfo = getWeatherCard(data);
+        setWeatherInfo(weatherCardInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [setTemp]);
+
+  useEffect(() => {
+    getClothingItems()
+      .then((data) => {
+        setCards(data);
+        handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
@@ -71,15 +98,27 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="page">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleTogggleSwitch }}
         >
-          <Header onCreateModal={handleCreateModal} />
+          <Header onCreateModal={handleCreateModal} cityName={city} />
           <Switch>
+            <Route path="/profile">
+              <Profile
+                cards={cards}
+                handleAddClick={handleCreateModal}
+                onSelectCard={handleSelectedCard}
+              />
+            </Route>
             <Route path="/">
-              <Main onSelectCard={handleSelectedCard} temp={temp} />
+              <Main
+                onSelectCard={handleSelectedCard}
+                weatherTemp={temp}
+                cards={cards}
+                weatherCard={weatherInfo}
+              />
             </Route>
           </Switch>
           <Footer />
@@ -97,9 +136,18 @@ function App() {
               onOpenDeleteModal={openDeleteModal}
             />
           )}
+          {deleteCardModal && (
+            <DeleteCardModal
+              onClose={() => {
+                setDeleteCardModal(false);
+              }}
+              handleDelete={handleCardDelete}
+              onCardDeleted={handleCloseModal}
+            />
+          )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

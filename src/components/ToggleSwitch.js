@@ -3,7 +3,7 @@ import "../blocks/ToggleSwitch.css";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
 const ToggleSwitch = () => {
-  const { currentTemperatureUnit, handleToggleSwitch } = useContext(
+  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
 
@@ -23,7 +23,7 @@ const ToggleSwitch = () => {
         id={`toggle_switch`}
         type="checkbox"
         checked={isChecked}
-        onChange={handleToggleSwitch}
+        onChange={handleToggleSwitchChange}
         value={currentTemperatureUnit}
       />
       <label className="switch__label" htmlFor={`toggle_switch`}>

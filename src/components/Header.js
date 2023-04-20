@@ -14,7 +14,9 @@ const Header = ({ cityName, onCreateModal }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={headerLogo} alt="logo" />
+          <Link className="header__logo-link" to="/">
+            <img src={headerLogo} alt="logo" />
+          </Link>
         </div>
         <p className="header__info">
           {currentDate}, {cityName}

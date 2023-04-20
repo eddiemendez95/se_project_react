@@ -6,7 +6,7 @@ import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
 import DeleteCardModal from "./DeleteCardModal";
 import Profile from "./Profile";
-import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitContext";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
 import {
   getWeatherCard,

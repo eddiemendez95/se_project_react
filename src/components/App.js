@@ -24,7 +24,7 @@ function App() {
   const [temp, setTemp] = useState({ F: 32, C: 0 });
   const [cards, setCards] = useState([]);
   const [city, setCity] = useState("");
-  const [weatherInfo, setWeatherInfo] = useState();
+  const [weatherInfo, setWeatherInfo] = useState("");
   const [deleteCardModal, setDeleteCardModal] = useState(false);
 
   const handleCreateModal = () => {
@@ -95,6 +95,18 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
   return (

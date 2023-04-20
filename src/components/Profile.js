@@ -3,13 +3,13 @@ import ClothesSection from "./ClothesCardSection";
 import SideBar from "./Sidebar";
 import "../blocks/Profile.css";
 
-function Profile({ cards, handleAddClick, onSelectCard }) {
+function Profile({ cards, onCreateModal, onSelectCard }) {
   return (
     <div className="profile">
       <SideBar />
       <ClothesSection
         cards={cards}
-        onClick={handleAddClick}
+        onCreateModal={onCreateModal}
         onSelectCard={onSelectCard}
       />
     </div>

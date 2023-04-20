@@ -14,7 +14,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   }, [isOpen]);
 
   function handleItemNameChange(e) {
-    setImageLink(e.target.value);
+    setItemName(e.target.value);
   }
 
   function handleItemImageLinkChange(e) {
@@ -62,7 +62,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
         <h3 className="modal__label">Image</h3>
         <input
           className="modal__input"
-          type="text"
+          type="url"
           name="link"
           placeholder="Image Url"
           minLength="1"

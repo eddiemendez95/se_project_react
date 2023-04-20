@@ -6,13 +6,13 @@ import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
 import DeleteCardModal from "./DeleteCardModal";
 import Profile from "./Profile";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitContext";
 import { useEffect, useState } from "react";
 import {
   getWeatherCard,
   getForecastWeather,
   parseWeatherData,
 } from "../utils/weatherApi";
-import CurrentTemperatureUnitContext from "../contexts/CurrentTemperaturUnitContext";
 import { Route, Switch } from "react-router-dom";
 import { getClothingItems, addClothingItem, deleteCard } from "../utils/api";
 import { HashRouter } from "react-router-dom/cjs/react-router-dom";

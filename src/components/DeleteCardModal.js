@@ -1,3 +1,4 @@
+import "../blocks/DeleteCardModal.css";
 import React from "react";
 
 const DeleteCardModal = ({ onClose, handleDelete }) => {

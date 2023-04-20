@@ -37,6 +37,37 @@
   transition: opacity 0.4s;
 }
 
+.header__username {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+.header__useravatar {
+  width: 40px;
+  height: 40px;
+}
+
 .header__button:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.header__userinfo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.header__userinfo-link:link {
+  text-decoration: none;
+}
+
+.header__userinfo-link:hover {
+  cursor: pointer;
   opacity: 0.6;
 }

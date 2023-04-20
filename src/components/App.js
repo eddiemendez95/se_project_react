@@ -108,7 +108,7 @@ function App() {
             <Route path="/profile">
               <Profile
                 cards={cards}
-                handleAddClick={handleCreateModal}
+                onCreateModal={handleCreateModal}
                 onSelectCard={handleSelectedCard}
               />
             </Route>

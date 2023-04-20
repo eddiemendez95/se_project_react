@@ -31,8 +31,16 @@ const Header = ({ cityName, onCreateModal }) => {
             + Add New Clothes
           </button>
         </div>
-        <div className="header__info">Terrence Tegegne</div>
-        <img src={avatarImage} alt="avatar" />
+        <div>
+          <Link className="header__userinfo-link" to="/profile">
+            <div className="header__username">Terrence Tegegne</div>
+            <img
+              className="header__useravatar"
+              src={avatarImage}
+              alt="avatar"
+            />
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import ItemCard from "./ItemCard";
+import "../blocks/ClothesCardSection.css";
 
-const ClothesSection = ({ cards, handleAddClick, onSelectCard }) => {
+const ClothesSection = ({ cards, onCreateModal, onSelectCard }) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -9,7 +10,7 @@ const ClothesSection = ({ cards, handleAddClick, onSelectCard }) => {
         <button
           className="clothes-section__add-button"
           type="button"
-          onClick={handleAddClick}
+          onClick={onCreateModal}
         >
           + Add new
         </button>

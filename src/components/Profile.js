@@ -1,9 +1,11 @@
 import React from "react";
 import ClothesSection from "./ClothesCardSection";
+import SideBar from "./Sidebar";
 
 function Profile({ cards, handleAddClick, onSelectCard }) {
   return (
     <div className="profile">
+      <SideBar />
       <ClothesSection
         cards={cards}
         onClick={handleAddClick}

@@ -38,7 +38,7 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleTogggleSwitch = () => {
+  const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
@@ -101,7 +101,7 @@ function App() {
     <HashRouter>
       <div className="page">
         <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleTogggleSwitch }}
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header onCreateModal={handleCreateModal} cityName={city} />
           <Switch>

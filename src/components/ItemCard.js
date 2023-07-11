@@ -1,6 +1,13 @@
+import React, { useContext } from "react";
 import "../blocks/Card.css";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const ItemCard = ({ item, onSelectCard }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked = item.likes.some((user) => user._id === currentUser._id);
+
+  const itemLikeButtonClassName = `...`;
+
   return (
     <div>
       <div className="card">

@@ -1,7 +1,6 @@
-const baseUrl =
-  "https://my-json-server.typicode.com/eddiemendez95/se_project_react";
+const baseUrl = "http://localhost:3001";
 
-const checkResponse = (res) => {
+export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   } else {
@@ -37,6 +36,40 @@ export const deleteCard = (id) => {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
+    },
+  }).then((res) => checkResponse(res));
+};
+
+export const editProfile = ({ name, avatar, token }) => {
+  return fetch(`${baseUrl}/users/,me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  }).then((res) => checkResponse(res));
+};
+
+export const addCardLike = (id, user, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => checkResponse(res));
+};
+
+export const removeCardLike = (id, user, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then((res) => checkResponse(res));
 };

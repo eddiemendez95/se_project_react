@@ -141,3 +141,53 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.modal__switchlink-login {
+  position: relative;
+  width: 85px;
+  height: 36px;
+  margin-bottom: -45px;
+  left: 90px;
+  border: none;
+  background-color: white;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.modal__switchlink-login:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
+
+.modal__switchlink-register {
+  position: relative;
+  width: 85px;
+  height: 36px;
+  margin-bottom: -45px;
+  left: 75px;
+  border: none;
+  background-color: white;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.modal__switchlink-register:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s linear;
+}
+
+.modal__error-login {
+  color: red;
+}

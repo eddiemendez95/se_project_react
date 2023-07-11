@@ -1,48 +1,79 @@
 import "../blocks/header.css";
 import avatarImage from "../images/avatar.svg";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import headerLogo from "../images/logo.svg";
 import ToggleSwitch from "./ToggleSwitch";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Header = ({ cityName, onCreateModal }) => {
+const Header = ({
+  cityName,
+  onAddButtonClick,
+  handleRegistration,
+  handleLogin,
+  isLoggedIn,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
+  const currentUserName = currentUser?.data?.name;
+  const currentUserAvatar = currentUser?.data?.avatar;
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
   return (
     <header className="header">
-      <div className="header__logo">
-        <div>
-          <Link className="header__logo-link" to="/">
-            <img src={headerLogo} alt="logo" />
-          </Link>
-        </div>
-        <p className="header__info">
+      <div className="header__info-container">
+        <Link className="header__logo-link" to="/">
+          <img className="header__logo" src={headerLogo} alt="logo" />
+        </Link>
+        <p className="header__date-city">
           {currentDate}, {cityName}
         </p>
       </div>
-      <div className="header__info-container">
+      <div className="header__userinfo-container">
         <ToggleSwitch />
-        <div>
-          <button
-            type="text"
-            onClick={onCreateModal}
-            className="header__button"
-          >
-            + Add New Clothes
-          </button>
-        </div>
-        <div>
-          <Link className="header__userinfo-link" to="/profile">
-            <div className="header__username">Terrence Tegegne</div>
-            <img
-              className="header__useravatar"
-              src={avatarImage}
-              alt="avatar"
-            />
-          </Link>
-        </div>
+        {isLoggedIn ? (
+          <>
+            <button
+              className="header__add-button"
+              type="button"
+              onClick={onAddButtonClick}
+            >
+              + Add Clothes
+            </button>
+            <Link className="header__userinfo-link" to="/profile">
+              <div className="header__username">{currentUserName}</div>
+              {currentUserAvatar ? (
+                <img
+                  className="header__useravatar"
+                  src={currentUserAvatar}
+                  alt="avatar"
+                />
+              ) : (
+                <div className="header__useravatar-letter">
+                  {currentUserName?.[0]}
+                </div>
+              )}
+            </Link>
+          </>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="header__signup-button"
+              onClick={handleRegistration}
+            >
+              Sign Up
+            </button>
+            <button
+              type="button"
+              className="header__login-button"
+              onClick={handleLogin}
+            >
+              Log In
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

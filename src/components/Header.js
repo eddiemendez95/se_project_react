@@ -30,7 +30,7 @@ const Header = ({
           {currentDate}, {cityName}
         </p>
       </div>
-      <div className="header__userinfo-container">
+      <div className="header__info-container">
         <ToggleSwitch />
         {isLoggedIn ? (
           <>

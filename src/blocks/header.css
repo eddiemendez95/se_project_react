@@ -135,3 +135,15 @@
   cursor: pointer;
   opacity: 0.6;
 }
+
+.header__add-button {
+  gap: 20px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Grotesk", sans-serif;
+}

@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -18,4 +19,44 @@
   font-weight: 700;
   font-style: normal;
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+}
+
+.sidebar__edit-profile-button {
+  margin: 0;
+  margin-top: 0px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  border: none;
+  background-color: #ffff;
+  cursor: pointer;
+}
+
+.sidebar__edit-profile-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.sidebar__edit-logout-button {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  border: none;
+  background-color: #ffff;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.sidebar__edit-logout-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

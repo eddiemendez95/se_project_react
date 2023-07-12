@@ -2,7 +2,7 @@ import React from "react";
 import ItemCard from "./ItemCard";
 import "../blocks/ClothesCardSection.css";
 
-const ClothesSection = ({ cards, onCreateModal, onSelectCard }) => {
+const ClothesSection = ({ cards, onCreateModal, onSelectCard, onCardLike }) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -18,7 +18,12 @@ const ClothesSection = ({ cards, onCreateModal, onSelectCard }) => {
       <div className="clothes-section__cards-container">
         {cards.map((card) => {
           return (
-            <ItemCard key={card.id} item={card} onSelectCard={onSelectCard} />
+            <ItemCard
+              key={card._id}
+              item={card}
+              onSelectCard={onSelectCard}
+              onCardLike={onCardLike}
+            />
           );
         })}
       </div>

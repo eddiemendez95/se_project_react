@@ -10,6 +10,7 @@ function Profile({
   openEditProfileModal,
   onCardLike,
   onLogOut,
+  userLoggedIn,
 }) {
   return (
     <div className="profile">

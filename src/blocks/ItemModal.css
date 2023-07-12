@@ -6,15 +6,6 @@
   border-radius: 16px;
 }
 
-/* .modal_caption {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 0;
-  margin-top: 20px;
-  margin-left: 32px;
-} */
-
 .modal__delete-button {
   font-weight: 700;
   font-style: bold;
@@ -32,4 +23,13 @@
 .modal__delete-button:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+.modal__clothes-image {
+  width: 100%;
+  margin-top: -23px;
+  width: 498px;
+  height: 398px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }

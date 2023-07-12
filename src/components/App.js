@@ -65,7 +65,7 @@ function App() {
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
-    addClothingItem({ name, imageUrl, weather })
+    addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
         setCards([newCard, ...cards]);
         handleCloseModal();
@@ -74,9 +74,9 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    deleteCard(selectedCard.id)
+    deleteCard(selectedCard._id, token)
       .then(() => {
-        setCards(cards.filter((item) => item.id !== selectedCard.id));
+        setCards(cards.filter((item) => item._id !== selectedCard._idid));
         handleCloseModal();
         setDeleteCardModal(false);
       })
@@ -165,19 +165,20 @@ function App() {
 
   const openEditProfileModal = () => {
     setUserEditProfileModal(true);
+    console.log("test");
     handleCloseModal();
   };
   const handleLikeClick = ({ id, isLiked, user }) => {
     const token = localStorage.getItem("jwt");
     isLiked
-      ? addCardLike({ id, user }, token)
+      ? removeCardLike(id, user, token)
           .then((updatedCard) => {
             setCards((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err))
-      : removeCardLike({ id, user }, token)
+      : addCardLike(id, user, token)
           .then((updatedCard) => {
             setCards((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
@@ -246,6 +247,7 @@ function App() {
                   onCreateModal={handleCreateModal}
                   onSelectCard={handleSelectedCard}
                   onEditProfile={openEditProfileModal}
+                  userLoggedIn={isLoggedIn}
                   onCardLike={handleLikeClick}
                 />
               </Route>

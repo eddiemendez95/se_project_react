@@ -17,11 +17,12 @@ export const getClothingItems = () => {
   }).then((res) => checkResponse(res));
 };
 
-export const addClothingItem = ({ name, imageUrl, weather }) => {
+export const addClothingItem = ({ name, imageUrl, weather, token }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -31,11 +32,12 @@ export const addClothingItem = ({ name, imageUrl, weather }) => {
   }).then((res) => checkResponse(res));
 };
 
-export const deleteCard = (id) => {
+export const deleteCard = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then((res) => checkResponse(res));
 };

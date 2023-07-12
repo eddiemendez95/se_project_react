@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import "../blocks/Card.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import liked from "../images/liked.svg";
+import unliked from "../images/unliked.svg";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = item.likes.some((user) => user._id === currentUser._id);
+  const isLiked = item.likes.some((user) => user === currentUser._id);
 
-  const itemLikeButtonClassName = `...`;
+  const handleLikeClick = () => {
+    onCardLike(item._id, isLiked, currentUser);
+  };
 
   return (
     <div>
@@ -18,7 +22,13 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           onClick={() => onSelectCard(item)}
         />
         <div className="card__name-container">
-          <div className="card_name">{item.name}</div>
+          <p className="card_name">{item.name}</p>
+          <img
+            src={isLiked ? liked : unliked}
+            alt="like button"
+            className="card__like"
+            onClick={handleLikeClick}
+          />
         </div>
       </div>
     </div>

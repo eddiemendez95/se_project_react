@@ -7,17 +7,14 @@ function Profile({
   cards,
   onCreateModal,
   onSelectCard,
-  openEditProfileModal,
+  onEditProfile,
   onCardLike,
   onLogOut,
   userLoggedIn,
 }) {
   return (
     <div className="profile">
-      <SideBar
-        handleEditProfile={openEditProfileModal}
-        handleLogOut={onLogOut}
-      />
+      <SideBar handleEditProfile={onEditProfile} handleLogOut={onLogOut} />
       <ClothesSection
         cards={cards}
         onCreateModal={onCreateModal}

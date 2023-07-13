@@ -1,5 +1,4 @@
 import "../blocks/header.css";
-import avatarImage from "../images/avatar.svg";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import headerLogo from "../images/logo.svg";
@@ -8,7 +7,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const Header = ({
   cityName,
-  onAddButtonClick,
+  onCreateModal,
   handleRegistration,
   handleLogin,
   isLoggedIn,
@@ -37,7 +36,7 @@ const Header = ({
             <button
               className="header__add-button"
               type="button"
-              onClick={onAddButtonClick}
+              onClick={onCreateModal}
             >
               + Add Clothes
             </button>

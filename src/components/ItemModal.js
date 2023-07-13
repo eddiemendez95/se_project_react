@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, onOpenDeleteModal }) => {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner._id === currentUser?.data?._id;
+  const isOwn = selectedCard.owner === currentUser?.data?._id;
 
   return (
     <div className="modal">

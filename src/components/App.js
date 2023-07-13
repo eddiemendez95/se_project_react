@@ -10,6 +10,7 @@ import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import EditProfileModal from "./EditProfileModal";
 import LogoutModal from "./LogOutModal";
+import ProtectedRoute from "./ProtectedRoute";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { signUp, signIn, checkToken } from "../utils/auth";
@@ -165,10 +166,9 @@ function App() {
 
   const openEditProfileModal = () => {
     setUserEditProfileModal(true);
-    console.log("test");
     handleCloseModal();
   };
-  const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = (id, isLiked, user) => {
     const token = localStorage.getItem("jwt");
     isLiked
       ? removeCardLike(id, user, token)
@@ -226,6 +226,26 @@ function App() {
     return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem("jwt");
+    if (storedToken) {
+      setToken(storedToken);
+      checkToken(storedToken)
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+          }
+          return res;
+        })
+        .then((userdata) => {
+          setCurrentUser(userdata);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <HashRouter>
@@ -241,16 +261,17 @@ function App() {
               handleLogin={openLoginModal}
             />
             <Switch>
-              <Route path="/profile">
+              <ProtectedRoute path="/profile" userLoggedIn={isLoggedIn}>
                 <Profile
                   cards={cards}
                   onCreateModal={handleCreateModal}
                   onSelectCard={handleSelectedCard}
                   onEditProfile={openEditProfileModal}
                   userLoggedIn={isLoggedIn}
+                  onLogOut={handleLogout}
                   onCardLike={handleLikeClick}
                 />
-              </Route>
+              </ProtectedRoute>
               <Route path="/">
                 <Main
                   onSelectCard={handleSelectedCard}
@@ -268,6 +289,7 @@ function App() {
                 isOpen={activeModal === "create"}
                 onAddItem={handleAddItemSubmit}
                 onClose={handleCloseModal}
+                token={token}
               />
             )}
             {activeModal === "preview" && (
@@ -323,6 +345,7 @@ function App() {
             )}
             {logoutModal && (
               <LogoutModal
+                isOpen={userLogInModal}
                 onClose={() => {
                   setLogoutModal(false);
                 }}

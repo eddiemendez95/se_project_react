@@ -1,7 +1,7 @@
 import React from "react";
 import "../blocks/LogOut.css";
 
-const LogoutModal = ({ onClose, handleLogout }) => {
+const LogoutModal = ({ isOpen, onClose, handleLogout }) => {
   return (
     <div className="modal modal__logout-container">
       <button

@@ -143,6 +143,7 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
         handleCloseModal();
+        setUserEditProfileModal(false);
       })
       .catch((err) => {
         console.log(err);

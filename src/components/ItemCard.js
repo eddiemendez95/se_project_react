@@ -6,9 +6,10 @@ import unliked from "../images/unliked.svg";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = item.likes.some((like) => like === currentUser?.data?._id);
+  const isLiked = item.likes.some((user) => user === currentUser?.data?._id);
 
   const handleLikeClick = () => {
+    console.log(item._id);
     onCardLike(item._id, isLiked, currentUser);
   };
 

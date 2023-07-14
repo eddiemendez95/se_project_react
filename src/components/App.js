@@ -173,17 +173,13 @@ function App() {
     const token = localStorage.getItem("jwt");
     isLiked
       ? removeCardLike(id, user, token)
-          .then((updatedCard) => {
-            setCards((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
+          .then((res) => {
+            setCards((cards) => cards.map((c) => (c._id === id ? res : c)));
           })
           .catch((err) => console.log(err))
       : addCardLike(id, user, token)
-          .then((updatedCard) => {
-            setCards((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
+          .then((res) => {
+            setCards((cards) => cards.map((c) => (c._id === id ? res : c)));
           })
           .catch((err) => console.log(err));
   };

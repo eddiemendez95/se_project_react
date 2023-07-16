@@ -68,7 +68,7 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([...cards, newCard?.data]);
         handleCloseModal();
       })
       .catch((err) => console.log(err));
@@ -77,7 +77,7 @@ function App() {
   const handleCardDelete = () => {
     deleteCard(selectedCard._id, token)
       .then(() => {
-        setCards(cards.filter((item) => item._id !== selectedCard._idid));
+        setCards(cards.filter((item) => item._id !== selectedCard._id));
         handleCloseModal();
         setDeleteCardModal(false);
       })

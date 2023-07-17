@@ -68,7 +68,7 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     addClothingItem({ name, imageUrl, weather, token })
       .then((newCard) => {
-        setCards([...cards, newCard?.data]);
+        setCards([newCard?.data, ...cards]);
         handleCloseModal();
       })
       .catch((err) => console.log(err));
@@ -170,6 +170,8 @@ function App() {
     handleCloseModal();
   };
   const handleLikeClick = (id, isLiked, user) => {
+    console.log(id);
+    console.log(user);
     const token = localStorage.getItem("jwt");
     isLiked
       ? removeCardLike(id, user, token)

@@ -2,8 +2,8 @@ import { checkResponse } from "./api";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https:://api.what2wear.mooo.com"
-    : "http://localhost:3000";
+    ? "https://api.what2wear.mooo.com"
+    : "http://localhost:3001";
 
 export const signUp = (name, avatar, email, password) => {
   return fetch(`${baseUrl}/signup`, {
